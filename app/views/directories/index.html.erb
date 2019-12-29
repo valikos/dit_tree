@@ -1,0 +1,10 @@
+<div style="display:flex">
+  <%= render partial: 'create_form', locals: { parent_id: nil }%>
+</div>
+
+<% @directories.each do |directory| %>
+  <div>
+    |-- <%= directory.name %> <small><%= link_to('&rarr;'.html_safe, directory) %></small>
+    <%= render partial: 'children', locals: { parent: directory, children: directory.children, offset: 10 } %>
+  </div>
+<% end %>
